@@ -83,6 +83,7 @@ server(){
             usage
             ;;
     esac
+    bash ./enableBBR.sh
 
 }
 
