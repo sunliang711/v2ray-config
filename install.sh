@@ -59,25 +59,25 @@ server(){
         ws|websocket)
             installV2ray
             cp ws/server-ws.json $dest
-            cp v2ray-ws.service $service
+            cp ws/v2ray-ws.service $service
             ;;
         kcp|mkcp)
             installV2ray
             cp kcp/server-kcp.json $dest
-            cp v2ray-kcp.service $service
+            cp kcp/v2ray-kcp.service $service
             ;;
         tls)
             installV2ray
             installPem
             cp tls/server-tls.json $dest
-            cp v2ray-tls.service $service
+            cp tls/v2ray-tls.service $service
             ;;
         tls-ws-web)
             installV2ray
             installPem
             installNginx
             cp tls-ws-web/server-tls-ws-web.json $dest
-            cp v2ray-tls-ws-web.service $service
+            cp tls-ws-web/v2ray-tls-ws-web.service $service
             ;;
         *)
             usage
