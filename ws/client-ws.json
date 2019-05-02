@@ -1,0 +1,96 @@
+{
+    "log": {
+      "loglevel": "warning",
+      "access": "/tmp/access.log",
+      "error": "/tmp/error.log"
+    },
+    "inbounds": [
+      {
+        "port": 1081,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth"
+        },
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls"
+          ]
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "vmess",
+        "settings": {
+          "vnext": [
+            {
+              "address": "",
+              "port": 8901,
+              "users": [
+                {
+                  "afterId": 64,
+                  "id": "e2791dbb-f340-4a71-998a-da3b184a1cef"
+                }
+              ]
+            }
+          ]
+        },
+        "mux": {
+          "enabled": true
+        },
+        "streamSettings": {
+          "network": "ws"
+        }
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          
+        },
+        "tag": "adblock"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPOnDemand",
+      "rules": [
+        {
+          "domain": [
+            "ad123.com"
+          ],
+          "type": "field",
+          "outboundTag": "adblock"
+        },
+        {
+          "domain": [
+            "qq.com"
+          ],
+          "type": "field",
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "outboundTag": "direct",
+          "domain": [
+            "geosite:cn"
+          ]
+        },
+        {
+          "type": "field",
+          "outboundTag": "direct",
+          "ip": [
+            "geoip:cn",
+            "geoip:private"
+          ]
+        }
+      ]
+    }
+  }

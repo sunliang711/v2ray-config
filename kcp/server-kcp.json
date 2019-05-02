@@ -1,0 +1,40 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/tmp/access.log",
+    "error": "/tmp/error.log"
+  },
+  "inbounds": [
+    {
+      "port": 8900,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "e2791dbb-f340-4a71-998a-da3b184a1cef",
+            "alterId": 64
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "mkcp",
+        "kcpSettings": {
+          "uplinkCapacity": 5,
+          "downlinkCapacity": 100,
+          "congestion": true,
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {
+        
+      }
+    }
+  ]
+}

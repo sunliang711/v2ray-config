@@ -1,0 +1,41 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/tmp/access.log",
+    "error": "/tmp/error.log"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "e2791dbb-f340-4a71-998a-da3b184a1cef",
+            "alterId": 64
+          }
+        ]
+      },
+      "streamSettings": {
+        "network":"tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/v2ray/v2ray.pem",
+              "keyFile": "/etc/v2ray/v2ray.key"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {
+        
+      }
+    }
+  ]
+}

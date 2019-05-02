@@ -1,0 +1,36 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/tmp/access.log",
+    "error": "/tmp/error.log"
+  },
+  "inbounds": [
+    {
+      "port": 10000,
+      "listen":"127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "e2791dbb-f340-4a71-998a-da3b184a1cef",
+            "alterId": 64
+          }
+        ]
+      },
+      "streamSettings": {
+        "network":"ws",
+        "wsSettings":{
+            "path":"/ray"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {
+        
+      }
+    }
+  ]
+}
